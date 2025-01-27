@@ -1,8 +1,8 @@
 <template>
-  <Enfant>
-    <template #header>
-      <h1>Titre de l'article</h1>
-    </template>
+  <Blog v-slot="{ date }">
+    <h1>Titre de l'article</h1>
+    <strong>Author: {{ author }}</strong>
+    <small>{{ date }}</small>
     <p>
       Le Lorem Ipsum est simplement du faux texte employé dans la composition et
       la mise en page avant impression. Le Lorem Ipsum est le faux texte
@@ -15,17 +15,18 @@
       plus récemment, par son inclusion dans des applications de mise en page de
       texte, comme Aldus PageMaker.
     </p>
-    <template #[bottom]>
       <AppButton></AppButton>
-    </template>
-  </Enfant>
+  </Blog>
 </template>
 
 <script setup lang="ts">
-import Enfant from './Enfant.vue';
+import { ref } from 'vue'
+import Blog from './Blog.vue';
 import AppButton from './AppButton.vue';
 
+const author = ref ('Jean de la tour')
 const bottom = 'cta';
+
 </script>
 
 <style scoped lang="scss">
